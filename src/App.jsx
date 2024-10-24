@@ -13,21 +13,25 @@ const MovieReviews = lazy(() =>
   import("./components/MovieReviews/MovieReviews")
 );
 
-import "./App.css";
+import styles from "./App.module.css";
 
 export const App = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Navigation />
-      <Suspense fallback={<div>Loading page...</div>}></Suspense>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-        <Route path="/movies/:movieId/cast" element={<MovieCast />} />
-        <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
+
+export default App;
