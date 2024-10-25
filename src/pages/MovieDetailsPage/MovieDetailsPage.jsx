@@ -61,12 +61,14 @@ const MovieDetailsPage = () => {
               {movieInfo.title} ({movieInfo.release_date.substring(0, 4)})
             </h2>
             <p className={styles.userScore}>
-              Rating: {movieInfo.vote_average * 10}%
+              <b>Rating: </b> {Math.round(movieInfo.vote_average * 10) / 10} /
+              10
+            </p>
+            <p className={styles.genres}>
+              <b>Genres: </b>
+              {movieInfo.genres.map((genre) => genre.name).join(", ")}
             </p>
             <p className={styles.overview}>{movieInfo.overview}</p>
-            <p className={styles.genres}>
-              Genres: {movieInfo.genres.map((genre) => genre.name).join(", ")}
-            </p>
           </div>
         </div>
       )}

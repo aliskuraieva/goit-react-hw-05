@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { requestMovieReviews } from "../../api/movies";
 
+import styles from "./MovieReviews.module.css";
+
 function MovieReviews() {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState(null);
@@ -26,12 +28,12 @@ function MovieReviews() {
     <>
       {loading && <div>Loading...</div>}
       {movieReviews !== null && movieReviews.length > 0 && (
-        <ul>
+        <ul className={styles.list}>
           {movieReviews.map((review) => {
             return (
               <li key={review.id}>
-                <h3>Author: {review.author}</h3>
-                <p>
+                <p className={styles.author}>Author: {review.author}</p>
+                <p className={styles.comment}>
                   <b>Comment:</b> {review.content}
                 </p>
               </li>
@@ -40,7 +42,7 @@ function MovieReviews() {
         </ul>
       )}
       {movieReviews !== null && movieReviews.length === 0 && (
-        <p>There are no reviews for this movie.</p>
+        <p>No reviews available for this movie.</p>
       )}
     </>
   );

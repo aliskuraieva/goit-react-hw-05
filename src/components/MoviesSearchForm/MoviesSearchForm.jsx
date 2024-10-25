@@ -17,9 +17,9 @@ const MoviesSearchForm = ({ onSearch }) => {
         className={styles.field}
         type="text"
         name="search"
-        placeholder="Find movies"
+        placeholder="Movie search..."
       />
-      <button className={styles.btn} type="submit">
+      <button className={styles.button} type="submit">
         Search
       </button>
     </form>

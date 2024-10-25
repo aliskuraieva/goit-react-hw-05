@@ -4,7 +4,7 @@ import styles from "./MovieList.module.css";
 function MovieList({ movies }) {
   const location = useLocation();
   return (
-    <ul>
+    <ul className={styles.list}>
       {movies.map((movie) => (
         <li key={movie.id}>
           <Link

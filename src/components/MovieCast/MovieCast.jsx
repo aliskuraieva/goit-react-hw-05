@@ -46,10 +46,10 @@ const MovieCast = () => {
                   alt={person.name}
                 />
                 <div>
-                  <p>
+                  <p className={styles.text}>
                     <b>{person.name}</b>
                   </p>
-                  <p>Character: {person.character}</p>
+                  <p className={styles.text}>Character: {person.character}</p>
                 </div>
               </li>
             );
